@@ -1,0 +1,141 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/Home/Home",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationBarBackgroundColor": "#ffffff",
+				"enablePullDownRefresh": false,
+				"backgroundColor": "#ffffff",
+				"backgroundColorTop": "#ffffff",
+				"backgroundColorBottom": "#ffffff"
+			}
+
+		}, {
+			"path": "pages/Reservate/Reservate",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationBarBackgroundColor": "#ffffff",
+				"enablePullDownRefresh": false,
+				"disableScroll": true
+			}
+
+		}, {
+			"path": "pages/My/My",
+			"style": {
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false,
+				"backgroundColor": "#ffffff",
+				"backgroundColorTop": "#ffffff",
+				"backgroundColorBottom": "#ffffff"
+			}
+
+		}
+	],
+	"subPackages": [{
+		"root": "subpackages",
+		"pages": [{
+				"path": "order/order",
+				"style": {
+					"navigationBarTitleText": "我的预约",
+					"navigationBarBackgroundColor": "#fbfbfb",
+					"enablePullDownRefresh": true,
+					"backgroundColor": "#fbfbfb",
+					"backgroundColorTop": "#fbfbfb",
+					"backgroundColorBottom": "#fbfbfb"
+				}
+			},
+			{
+				"path": "order/detail",
+				"style": {
+					"navigationBarTitleText": "预约详情",
+					"navigationBarBackgroundColor": "#ffffff",
+					"enablePullDownRefresh": false,
+					"backgroundColor": "#ffffff",
+					"backgroundColorTop": "#ffffff",
+					"backgroundColorBottom": "#ffffff"
+				}
+			}, {
+				"path": "My/support",
+				"style": {
+					"navigationBarTitleText": "技术支持",
+					"navigationBarBackgroundColor": "#ffffff",
+					"enablePullDownRefresh": false,
+					"disableScroll": true
+				}
+			}, {
+				"path": "Reservate/addProduct",
+				"style": {
+					"navigationBarTitleText": "添加服务项目",
+					"navigationBarBackgroundColor": "#ffffff",
+					"enablePullDownRefresh": false,
+					"backgroundColor": "#ffffff",
+					"backgroundColorTop": "#ffffff",
+					"backgroundColorBottom": "#ffffff"
+				}
+			}, {
+				"path": "Reservate/addStaff",
+				"style": {
+					"navigationBarTitleText": "添加服务人员",
+					"navigationBarBackgroundColor": "#ffffff",
+					"enablePullDownRefresh": false,
+					"backgroundColor": "#ffffff",
+					"backgroundColorTop": "#ffffff",
+					"backgroundColorBottom": "#ffffff"
+				}
+			}, {
+				"path": "Home/detail",
+				"style": {
+					"navigationBarTitleText": "项目详情",
+					"navigationBarBackgroundColor": "#ffffff",
+					"enablePullDownRefresh": false,
+					"backgroundColor": "#ffffff",
+					"backgroundColorTop": "#ffffff",
+					"backgroundColorBottom": "#ffffff"
+				}
+			}, {
+				"path": "Home/reservate",
+				"style": {
+					"navigationBarTitleText": "预约",
+					"navigationBarBackgroundColor": "#ffffff",
+					"enablePullDownRefresh": false,
+					"backgroundColor": "#ffffff",
+					"backgroundColorTop": "#ffffff",
+					"backgroundColorBottom": "#ffffff"
+				}
+
+			}
+		]
+	}],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"backgroundColor": "#ffffff",
+		"color": "#768191",
+		"selectedColor": "#768191",
+		"list": [{
+				"pagePath": "pages/Home/Home",
+				"iconPath": "static/images/home.png",
+				"selectedIconPath": "static/images/home-select.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/Reservate/Reservate",
+				"iconPath": "static/images/reservate.png",
+				"selectedIconPath": "static/images/reservate-select.png",
+				"text": "预约"
+			},
+			{
+				"pagePath": "pages/My/My",
+				"iconPath": "static/images/my.png",
+				"selectedIconPath": "static/images/my-select.png",
+				"text": "我的"
+			}
+		]
+	},
+	"uniIdRouter": {}
+}
