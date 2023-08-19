@@ -49,6 +49,7 @@
 				<image class="cell-right-icon" src="/static/images/my/arrow-right.png"></image>
 			</view>
 		</view>
+		<againReservate ref="againReservate" :text="text"></againReservate>
 	</view>
 </template>
 
@@ -61,7 +62,8 @@ export default {
 		return {
 			userInfo: null,
 			myBg: '',
-			safeTopHeight: null
+			safeTopHeight: null,
+			text: ''
 		};
 	},
 	computed: {
@@ -86,10 +88,9 @@ export default {
 		},
 		handleShowOrder(type) {
 			if (isLogin()) {
-				return uni.showToast({
-					icon: 'none',
-					title: '您还未登录, 请先登录'
-				});
+				this.text = '您还未登录, 请先登录';
+				this.$refs.againReservate.open();
+				return;
 			}
 			uni.navigateTo({
 				url: '/subpackages/order/order?orderType=' + type

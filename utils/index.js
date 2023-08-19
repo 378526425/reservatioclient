@@ -43,10 +43,6 @@ export function goLogin() {
 				wxlogin({
 					code
 				}).then((res) => {
-					uni.showToast({
-						icon: 'none',
-						title: '登录成功'
-					})
 					uni.setStorageSync('token', res.data.token);
 					resolve()
 				});

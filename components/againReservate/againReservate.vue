@@ -4,7 +4,7 @@
 			<view class="mask-content">
 				<image class="clock" src="/static/images/order/clock.png"></image>
 				<view class="mask-title bold">{{ text }}</view>
-				<view class="mask-btn"><view class="btn reset-submit" @tap="show = false">确定</view></view>
+				<view class="mask-btn"><view class="btn reset-submit" @tap="close">确定</view></view>
 			</view>
 		</view>
 	</view>
@@ -25,12 +25,20 @@ export default {
 	},
 	data() {
 		return {
-			show: false
+			show: false,
+			type: 0
 		};
 	},
 	methods: {
-		open() {
+		open(type = 0) {
+			this.type = type;
 			this.show = true;
+		},
+		close() {
+			if (this.type === 1) {
+				this.$emit('link');
+			}
+			this.show = false;
 		}
 	}
 };

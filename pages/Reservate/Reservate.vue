@@ -34,13 +34,13 @@
 		<view class="form">
 			<view class="label regular">预约人</view>
 			<view class="content bold">
-				<view class="input"><input :class="[orderForm.contacts ? '' : 'input-placeholder']" v-model="orderForm.contacts" type="text" disabled placeholder="请输入" /></view>
+				<view class="input"><input :class="[orderForm.contacts ? '' : 'input-placeholder']" v-model="orderForm.contacts" type="text" placeholder="请输入" /></view>
 			</view>
 		</view>
 		<view class="form phone">
 			<view class="label regular">手机号</view>
 			<view class="content bold">
-				<view class="input"><input :class="[orderForm.phone ? '' : 'input-placeholder']" v-model="orderForm.phone" type="text" disabled placeholder="请输入" /></view>
+				<view class="input"><input :class="[orderForm.phone ? '' : 'input-placeholder']" v-model="orderForm.phone" type="text" placeholder="请输入" /></view>
 			</view>
 		</view>
 		<view class="form remark">
@@ -50,7 +50,7 @@
 			</view>
 		</view>
 		<view class="btn" @tap="handleNow">立即预约</view>
-		<againReservate ref="againReservate" :text="text"></againReservate>
+		<againReservate ref="againReservate" :text="text" @link="handleRouteLink"></againReservate>
 		<reservateTime ref="reservateTime" @confirm="handleConfirm"></reservateTime>
 	</view>
 </template>
@@ -91,10 +91,9 @@ export default {
 					url: '/subpackages/Reservate/addStaff?id=' + this.orderForm.productId
 				});
 			} else {
-				uni.showToast({
-					icon: 'none',
-					title: '请选择服务项目'
-				});
+				this.text = '请选择服务项目';
+				this.$refs.againReservate.open();
+				return;
 			}
 		},
 		handleSelectProduct() {
@@ -108,19 +107,11 @@ export default {
 		//立即预约
 		handleNow() {
 			if (!this.orderForm.startTime) {
-				// return uni.showToast({
-				// 	icon: 'none',
-				// 	title: '请选择到店时间'
-				// });
 				this.text = '请选择到店时间';
 				this.$refs.againReservate.open();
 				return;
 			}
 			if (!this.orderForm.productId) {
-				// return uni.showToast({
-				// 	icon: 'none',
-				// 	title: '请选择服务项目'
-				// });
 				this.text = '请选择服务项目';
 				this.$refs.againReservate.open();
 				return;
@@ -149,17 +140,14 @@ export default {
 					this.text = res.msg;
 					this.$refs.againReservate.open();
 				} else {
-					uni.showToast({
-						icon: 'none',
-						title: '预约成功',
-						duration: 1500
-					});
-					setTimeout(() => {
-						uni.navigateTo({
-							url: '/subpackages/order/order'
-						});
-					}, 1500);
+					this.text = '预约成功';
+					this.$refs.againReservate.open(1);
 				}
+			});
+		},
+		handleRouteLink() {
+			uni.navigateTo({
+				url: '/subpackages/order/order'
 			});
 		}
 	}

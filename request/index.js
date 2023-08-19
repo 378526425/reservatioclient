@@ -24,19 +24,11 @@ export default function request(config, isLoading = false) {
 					resolve(res.data)
 				} else {
 					reject(res)
-					uni.showToast({
-						icon: 'none',
-						title: '接口数据异常,稍后再试'
-					})
 				}
 			},
 			fail(res) {
 				isLoading && uni.hideLoading()
 				reject(res)
-				uni.showToast({
-					icon: 'none',
-					title: '接口数据异常,稍后再试'
-				})
 			}
 		})
 	})
