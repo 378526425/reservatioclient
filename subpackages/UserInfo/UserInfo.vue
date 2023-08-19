@@ -37,12 +37,9 @@ export default {
 	methods: {
 		handleChooseAvatar(e) {
 			uni.uploadFile({
-				url: `${baseURl}/file/static/upload`,
+				url: `${baseURl}/file/upload`,
 				filePath: e.detail.avatarUrl,
 				name: 'file',
-				formData: {
-					path: 'images/user'
-				},
 				success: res => {
 					const url = JSON.parse(res.data).data.url;
 					this.avatarUrl = `${baseURl}/${url}`;
