@@ -9,9 +9,9 @@
 		<view class="order-list" v-if="orderList.length > 0">
 			<view class="order-item" v-for="order in orderList" :key="order.id">
 				<view class="order-info">
-					<image class="order-img" :src="order.preImg"></image>
+					<image class="order-img" :src="order.preImg" @tap="handleOrderDetail(order.id)"></image>
 					<view class="order-detail">
-						<view class="project-name bold">{{ order.title }}</view>
+						<view class="project-name bold" @tap="handleOrderDetail(order.id)">{{ order.title }}</view>
 						<view class="order-price regular">价格：￥{{ order.price }}</view>
 						<view class="create-time regular">创建时间：{{ order.createTime }}</view>
 						<view class="reservate-time regular">预约时间：{{ order.startTime }}</view>
@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import { getSystemConfig } from '@/api/home.js';
 import { orderList } from '@/api/order.js';
 export default {
 	data() {
@@ -47,10 +48,10 @@ export default {
 			loading: false,
 			active: '',
 			tabsList: [
-				{ name: '全部', value: '', list: [] },
-				{ name: '待服务', value: 'WAIT', list: [] },
-				{ name: '已服务', value: 'SERVEB', list: [] },
-				{ name: '过期/取消', value: 'INVALID', list: [] }
+				{ name: '全部', value: '', list: null },
+				{ name: '待服务', value: 'WAIT', list: null },
+				{ name: '已服务', value: 'SERVEB', list: null },
+				{ name: '过期/取消', value: 'INVALID', list: null }
 			],
 			params: {
 				pageIndex: 1,
@@ -85,11 +86,11 @@ export default {
 	methods: {
 		getList() {
 			this.loading = true;
-			orderList(this.params).then((res) => {
+			orderList(this.params).then(res => {
 				this.loading = false;
 				this.total = res.data.totalCount;
 				this.orderList.push(...res.data.rows);
-				this.tabsList.find((item) => item.value === this.active).list = this.orderList;
+				this.tabsList.find(item => item.value === this.active).list = this.orderList;
 				this.noMoreShow = this.params.pageIndex * this.params.pageSize > this.total;
 			});
 		},
@@ -97,8 +98,8 @@ export default {
 			this.active = tab.value;
 			this.params.pageIndex = 1;
 			this.params.orderType = tab.value;
-			const currentTab = this.tabsList.find((item) => item.value === this.active);
-			if (currentTab.list.length > 0) {
+			const currentTab = this.tabsList.find(item => item.value === this.active);
+			if (currentTab.list) {
 				this.orderList = currentTab.list;
 			} else {
 				this.orderList = [];
@@ -106,6 +107,16 @@ export default {
 			}
 		},
 		handleOrderDetail(id) {
+			// #ifdef MP-WEIXIN
+			getSystemConfig().then(res => {
+				uni.requestSubscribeMessage({
+					tmplIds: JSON.parse(res.data),
+					success: res => {
+						console.log(res);
+					}
+				});
+			});
+			// #endif
 			uni.navigateTo({
 				url: '/subpackages/order/detail?id=' + id
 			});
@@ -117,8 +128,11 @@ export default {
 		},
 		// 再次预约
 		handleAgainOrder(id) {
-			this.orderId = id;
-			this.$refs.againReservate.open();
+			// this.orderId = id;
+			// this.$refs.againReservate.open();
+			uni.navigateTo({
+				url: '/subpackages/Home/reservate'
+			});
 		}
 	}
 };
@@ -179,6 +193,7 @@ export default {
 				width: 182rpx;
 				height: 182rpx;
 				margin-right: 24rpx;
+				border-radius: 12rpx;
 			}
 			.order-detail {
 				view {

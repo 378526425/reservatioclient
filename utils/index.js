@@ -1,3 +1,7 @@
+import {
+	wxlogin
+} from '@/api/user.js';
+
 function handleMonthDay(monthDay) {
 	return monthDay < 10 ? '0' + monthDay : monthDay
 }
@@ -23,4 +27,30 @@ export function generateTime() {
 		arr.push(i + ':00:00')
 	}
 	return arr
+}
+
+export function isLogin() {
+	return !uni.getStorageSync('token')
+}
+
+export function goLogin() {
+	return new Promise((resolve) => {
+		wx.login({
+			success: (res) => {
+				const {
+					code
+				} = res;
+				wxlogin({
+					code
+				}).then((res) => {
+					uni.showToast({
+						icon: 'none',
+						title: '登录成功'
+					})
+					uni.setStorageSync('token', res.data.token);
+					resolve()
+				});
+			}
+		});
+	})
 }

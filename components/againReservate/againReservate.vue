@@ -3,11 +3,8 @@
 		<view v-if="show" class="mask">
 			<view class="mask-content">
 				<image class="clock" src="/static/images/order/clock.png"></image>
-				<view class="mask-title bold">此预约有重复</view>
-				<view class="mask-btn">
-					<view class="btn reset-submit">重新提交</view>
-					<view class="btn back" @tap="show = false">返回</view>
-				</view>
+				<view class="mask-title bold">{{ text }}</view>
+				<view class="mask-btn"><view class="btn reset-submit" @tap="show = false">确定</view></view>
 			</view>
 		</view>
 	</view>
@@ -19,6 +16,10 @@ export default {
 	props: {
 		orderId: {
 			type: [String, Number],
+			default: ''
+		},
+		text: {
+			type: String,
 			default: ''
 		}
 	},
@@ -49,7 +50,7 @@ export default {
 	justify-content: center;
 	.mask-content {
 		width: 474rpx;
-		height: 522rpx;
+		height: 454rpx;
 		background: #ffffff;
 		border-radius: 32rpx 32rpx 32rpx 32rpx;
 		opacity: 1;

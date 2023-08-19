@@ -104,6 +104,17 @@
 					"backgroundColorBottom": "#ffffff"
 				}
 
+			}, {
+				"path": "UserInfo/UserInfo",
+				"style": {
+					"navigationBarTitleText": "修改资料",
+					"navigationBarBackgroundColor": "#ffffff",
+					"enablePullDownRefresh": false,
+					"backgroundColor": "#ffffff",
+					"backgroundColorTop": "#ffffff",
+					"backgroundColorBottom": "#ffffff"
+				}
+
 			}
 		]
 	}],

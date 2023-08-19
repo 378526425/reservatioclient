@@ -1,30 +1,24 @@
 <template>
 	<view style="padding-bottom: 10rpx">
-		<view style="height: 422rpx">
-			<image src="../../static/images/home/home-logo.png" style="width: 100%; height: 422rpx"></image>
-		</view>
+		<view style="height: 422rpx"><image :src="homeData.mainImg" style="width: 100%; height: 422rpx"></image></view>
 		<view class="shop">
-			<view class="shop-logo">
-				<image src="../../static/images/home/shop-img.png" style="width: 144rpx; height: 144rpx"></image>
-			</view>
+			<view class="shop-logo"><image :src="homeData.preImg" style="width: 144rpx; height: 144rpx"></image></view>
 			<view class="shop-info">
-				<view class="shop-name">莱特妮斯（沙坪坝店）</view>
+				<view class="shop-name">{{ homeData.title || '' }}</view>
 				<view class="shop-time">
 					<image src="../../static/images/home/shop-time.png"></image>
-					<view>周一至周日 10:30-20:30</view>
+					<view>{{ homeData.time || '' }}</view>
 				</view>
 				<view class="shop-address">
 					<image src="../../static/images/home/home-addr.png"></image>
-					<view>三峡广场龙湖光年金沙天街12-9号</view>
+					<view>{{ homeData.location || '' }}</view>
 				</view>
 			</view>
 		</view>
 		<view class="coupon" style="background-image: url('/static/images/home/home-bg.png')">优惠项目</view>
 		<view class="project-list">
 			<view class="project-item" v-for="product in productList" :key="product.id" @tap="handleProductDetail(product.id)">
-				<view class="project-image">
-					<image :src="product.preImg" mode="aspectFill"></image>
-				</view>
+				<view class="project-image"><image :src="product.preImg" mode="aspectFill"></image></view>
 				<view class="project-body">
 					<view class="project-title bold">{{ product.title }}</view>
 					<view class="project-time regular">{{ product.duration }}{{ product.timeUnit | timeUnitFormat }} {{ product.introduction }}</view>
@@ -44,11 +38,12 @@
 </template>
 
 <script>
-import { getHomeData } from '@/api/home.js';
+import { getHomeData, getSystemConfig } from '@/api/home.js';
 import { getCouponProductList } from '@/api/product.js';
 export default {
 	data() {
 		return {
+			homeData: {},
 			params: {
 				pageIndex: 1,
 				pageSize: 10
@@ -60,7 +55,9 @@ export default {
 		};
 	},
 	onLoad() {
-		getHomeData().then((res) => {});
+		getHomeData().then(res => {
+			this.homeData = res.data;
+		});
 		this.getList();
 	},
 	onReachBottom() {
@@ -74,7 +71,7 @@ export default {
 	methods: {
 		getList() {
 			this.loading = true;
-			getCouponProductList(this.params).then((res) => {
+			getCouponProductList(this.params).then(res => {
 				this.loading = false;
 				this.total = res.data.totalCount;
 				this.productList = this.productList.concat(res.data.rows);

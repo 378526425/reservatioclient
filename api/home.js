@@ -13,3 +13,16 @@ export function getHomeData() {
 		method: "GET"
 	})
 }
+
+/**
+ * 查询系统配置
+ */
+export function getSystemConfig() {
+	return request({
+		url: "/msfast/sysconfig/value",
+		method: 'GET',
+		data: {
+			code: 'Wx_Template'
+		}
+	})
+}

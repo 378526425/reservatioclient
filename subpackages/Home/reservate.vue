@@ -34,25 +34,19 @@
 		<view class="form">
 			<view class="label regular">预约人</view>
 			<view class="content bold">
-				<view class="input">
-					<input :class="[orderForm.contacts ? '' : 'input-placeholder']" v-model="orderForm.contacts" type="text" disabled placeholder="请输入" />
-				</view>
+				<view class="input"><input :class="[orderForm.contacts ? '' : 'input-placeholder']" v-model="orderForm.contacts" type="text" disabled placeholder="请输入" /></view>
 			</view>
 		</view>
 		<view class="form phone">
 			<view class="label regular">手机号</view>
 			<view class="content bold">
-				<view class="input">
-					<input :class="[orderForm.phone ? '' : 'input-placeholder']" v-model="orderForm.phone" type="text" disabled placeholder="请输入" />
-				</view>
+				<view class="input"><input :class="[orderForm.phone ? '' : 'input-placeholder']" v-model="orderForm.phone" type="text" disabled placeholder="请输入" /></view>
 			</view>
 		</view>
 		<view class="form remark">
 			<view class="label regular">备注</view>
 			<view class="content bold">
-				<view class="input">
-					<input :class="[orderForm.remark ? '' : 'input-placeholder']" v-model="orderForm.remark" type="text" placeholder="请输入（选填）" />
-				</view>
+				<view class="input"><input :class="[orderForm.remark ? '' : 'input-placeholder']" v-model="orderForm.remark" type="text" placeholder="请输入（选填）" /></view>
 			</view>
 		</view>
 		<view class="btn" @tap="handleNow">立即预约</view>
@@ -63,6 +57,7 @@
 <script>
 import { getPersonnelInfo } from '@/api/reservate.js';
 import { createOrder } from '@/api/order.js';
+import { isLogin, goLogin } from '@/utils/index.js';
 export default {
 	data() {
 		return {
@@ -127,6 +122,17 @@ export default {
 					title: '请选择服务项目'
 				});
 			}
+			if (isLogin()) {
+				return uni.showModal({
+					title: '提示',
+					content: '您还未登录，是否去登录',
+					success: res => {
+						if (res.confirm) {
+							goLogin();
+						}
+					}
+				});
+			}
 			const _data = {
 				contacts: this.orderForm.contacts,
 				personId: this.orderForm.personId,
@@ -135,7 +141,7 @@ export default {
 				remark: this.orderForm.remark,
 				startTime: this.orderForm.startTime
 			};
-			createOrder(_data).then((res) => {
+			createOrder(_data).then(res => {
 				if (res.code !== 200) {
 					uni.showToast({
 						icon: 'none',

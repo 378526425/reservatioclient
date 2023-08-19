@@ -1,14 +1,12 @@
 <template>
 	<view class="page">
-		<view class="order-img">
-			<image class="order-img" :src="orderInfo.preImg"></image>
-		</view>
+		<view class="order-img"><image class="order-img" :src="orderInfo.preImg"></image></view>
 		<view class="product-info">
-			<view class="product-title">{{ orderInfo.title }}</view>
-			<view class="product-sku regular">{{ orderInfo.duration }}{{ orderInfo.timeUnit | timeUnitFormat }} {{ orderInfo.introduction }}</view>
+			<view class="product-title">{{ orderInfo.title || '' }}</view>
+			<view class="product-sku regular">{{ orderInfo.duration || 0 }}{{ orderInfo.timeUnit | timeUnitFormat }} {{ orderInfo.introduction || '' }}</view>
 			<view class="price">
-				<view class="coupon-price bold">¥{{ orderInfo.price }}</view>
-				<view class="del-price regular">¥{{ orderInfo.oriPrice }}</view>
+				<view class="coupon-price bold">¥{{ orderInfo.price || 0 }}</view>
+				<view class="del-price regular">¥{{ orderInfo.oriPrice || 0 }}</view>
 			</view>
 		</view>
 		<view class="driver"></view>
@@ -67,7 +65,7 @@ export default {
 	},
 	methods: {
 		getOrderDetail() {
-			orderDetail(this.orderId).then((res) => {
+			orderDetail(this.orderId).then(res => {
 				this.orderInfo = res.data;
 			});
 		},

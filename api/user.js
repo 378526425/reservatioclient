@@ -39,3 +39,14 @@ export function getUserInfo() {
 		method: 'GET'
 	})
 }
+
+/**
+ * 更新用户信息
+ */
+export function updatePersonInfo(data) {
+	return request({
+		url: "/reservation/fruser/edit",
+		method: 'POST',
+		data
+	});
+}

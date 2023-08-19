@@ -4,7 +4,7 @@ const baseURl = `${location.protocol}//${location.host}/`
 
 // #ifdef MP-WEIXIN
 // const baseURl = 'http://101.35.152.208:8083/'
-const baseURl = 'https://www.wxmblog.com/reservationdevapi'
+export const baseURl = 'https://www.wxmblog.com/reservationdevapi'
 // #endif
 
 export default function request(config, isLoading = false) {

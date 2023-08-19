@@ -1,38 +1,14 @@
 <script>
 import { wxlogin, wxregister } from '@/api/user.js';
 export default {
-	onLaunch: function () {
+	onLaunch: function() {
 		console.log('App Launch');
-		// 引入字体
-		// uni.loadFontFace({
-		// 	family: 'bahnschrift',
-		// 	source: 'url("https://www.wxmblog.com/reservationdevapi/fonts/bahnschrift.ttf")',
-		// 	success: (res) => {
-		// 		console.log(res);
-		// 	},
-		// 	fail: (err) => {
-		// 		console.log(err);
-		// 	}
-		// });
 		// #ifdef MP-WEIXIN
-		if (!uni.getStorageSync('token')) {
+		if (!uni.getStorageSync('is_register')) {
 			wx.login({
-				success: (res) => {
-					const { code } = res;
-					wxlogin({ code }).then((res) => {
-						if (res.code === 11002 && res.msg === '用户不存在') {
-							wx.login({
-								success: (res) => {
-									wxregister({ code: res.code, nickName: '微信用户' }).then((res) => {
-										uni.switchTab({
-											url: '/pages/Home/Home'
-										});
-									});
-								}
-							});
-						} else {
-							uni.setStorageSync('token', res.data.token);
-						}
+				success: res => {
+					wxregister({ code: res.code, nickName: '微信用户' }).then(res => {
+						uni.setStorageSync('is_register', 1);
 					});
 				}
 			});
@@ -40,10 +16,10 @@ export default {
 
 		// #endif
 	},
-	onShow: function () {
+	onShow: function() {
 		console.log('App Show');
 	},
-	onHide: function () {
+	onHide: function() {
 		console.log('App Hide');
 	}
 };

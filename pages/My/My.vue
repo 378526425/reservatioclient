@@ -5,20 +5,30 @@
 			<view class="weixin-header regular">个人中心</view>
 			<!-- #endif -->
 			<view class="user-info">
-				<image src="/static/images/my/avatar.png" style="width: 140rpx; height: 140rpx"></image>
-				<view class="username bold">{{ userInfo.nickName }}</view>
+				<block v-if="userInfo">
+					<image
+						:src="userInfo.headPortrait ? userInfo.headPortrait : '/static/images/my/avatar.png'"
+						style="width: 140rpx; height: 140rpx; border-radius: 50%;"
+						@tap="handleUpdateUserInfo"
+					></image>
+					<view class="username bold" @tap="handleUpdateUserInfo">{{ userInfo.nickName }}</view>
+				</block>
+				<block v-else>
+					<image src="/static/images/my/avatar.png" style="width: 140rpx; height: 140rpx"></image>
+					<view class="username bold" @tap="handleLogin">请登录</view>
+				</block>
 			</view>
 			<view class="function-area">
 				<view class="area" @tap="handleShowOrder('')">
-					<view class="num">{{ userInfo.allOrder }}</view>
+					<view class="num">{{ userInfo.allOrder || 0 }}</view>
 					<view class="title regular">预约记录</view>
 				</view>
 				<view class="area" @tap="handleShowOrder('WAIT')">
-					<view class="num">{{ userInfo.waitOrder }}</view>
+					<view class="num">{{ userInfo.waitOrder || 0 }}</view>
 					<view class="title regular">待服务</view>
 				</view>
 				<view class="area" @tap="handleShowOrder('SERVEB')">
-					<view class="num">{{ userInfo.completeOrder }}</view>
+					<view class="num">{{ userInfo.completeOrder || 0 }}</view>
 					<view class="title regular">已服务</view>
 				</view>
 			</view>
@@ -31,7 +41,7 @@
 				</view>
 				<image class="cell-right-icon" src="/static/images/my/arrow-right.png"></image>
 			</view>
-			<view class="cell">
+			<view class="cell" v-if="isShowLogout" @tap="handleLogout">
 				<view class="cell-left">
 					<image class="cell-left-icon" src="/static/images/my/logout.png" style="width: 34rpx; height: 36rpx"></image>
 					<view class="cell-left-text regular">注销登录</view>
@@ -45,13 +55,19 @@
 <script>
 import { getUserInfo } from '@/api/user.js';
 import { myBg } from '@/utils/imgBase64.js';
+import { isLogin, goLogin } from '@/utils/index.js';
 export default {
 	data() {
 		return {
-			userInfo: {},
+			userInfo: null,
 			myBg: '',
 			safeTopHeight: null
 		};
+	},
+	computed: {
+		isShowLogout() {
+			return !isLogin();
+		}
 	},
 	onLoad() {
 		this.myBg = myBg;
@@ -59,13 +75,22 @@ export default {
 		const res = uni.getWindowInfo();
 		this.safeTopHeight = res.safeArea.top;
 	},
+	onShow() {
+		this.handleGetUserInfo();
+	},
 	methods: {
 		handleGetUserInfo() {
-			getUserInfo().then((res) => {
+			getUserInfo().then(res => {
 				this.userInfo = res.data;
 			});
 		},
 		handleShowOrder(type) {
+			if (isLogin()) {
+				return uni.showToast({
+					icon: 'none',
+					title: '您还未登录, 请先登录'
+				});
+			}
 			uni.navigateTo({
 				url: '/subpackages/order/order?orderType=' + type
 			});
@@ -73,6 +98,26 @@ export default {
 		handleGetSupport() {
 			uni.navigateTo({
 				url: '/subpackages/My/support'
+			});
+		},
+		// 修改资料
+		handleUpdateUserInfo() {
+			uni.navigateTo({
+				url: '/subpackages/UserInfo/UserInfo'
+			});
+		},
+		// 登录
+		async handleLogin() {
+			await goLogin();
+			uni.reLaunch({
+				url: '/pages/Home/Home'
+			});
+		},
+		//  退出登录
+		handleLogout() {
+			uni.removeStorageSync('token');
+			uni.reLaunch({
+				url: '/pages/Home/Home'
 			});
 		}
 	}
