@@ -30,7 +30,7 @@
 			</view>
 			<view class="order-item">
 				<view class="label regular">服务人员</view>
-				<view class="content bold">{{ orderInfo.personName }}</view>
+				<view class="content bold">{{ orderInfo.personName==null?"到店分配":orderInfo.personName }}</view>
 			</view>
 			<view class="order-item">
 				<view class="label regular">预约人</view>
