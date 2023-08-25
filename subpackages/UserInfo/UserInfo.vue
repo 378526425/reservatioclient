@@ -27,7 +27,7 @@ export default {
 		};
 	},
 	onLoad() {
-		getUserInfo().then(res => {
+		getUserInfo().then((res) => {
 			const { nickName, headPortrait } = res.data;
 			console.log(nickName, headPortrait);
 			this.avatarUrl = headPortrait ? headPortrait : '/static/images/my/avatar.png';
@@ -40,9 +40,9 @@ export default {
 				url: `${baseURl}/file/upload`,
 				filePath: e.detail.avatarUrl,
 				name: 'file',
-				success: res => {
+				success: (res) => {
 					const url = JSON.parse(res.data).data.url;
-					this.avatarUrl = `${baseURl}/${url}`;
+					this.avatarUrl = url;
 				}
 			});
 		},
@@ -51,7 +51,7 @@ export default {
 				headPortrait: this.avatarUrl,
 				nickName: e.detail.value.nickname
 			};
-			updatePersonInfo(userInfo).then(res => {
+			updatePersonInfo(userInfo).then((res) => {
 				uni.navigateBack();
 			});
 		}

@@ -8,7 +8,7 @@
 				<block v-if="userInfo">
 					<image
 						:src="userInfo.headPortrait ? userInfo.headPortrait : '/static/images/my/avatar.png'"
-						style="width: 140rpx; height: 140rpx; border-radius: 50%;"
+						style="width: 140rpx; height: 140rpx; border-radius: 50%"
 						@tap="handleUpdateUserInfo"
 					></image>
 					<view class="username bold" @tap="handleUpdateUserInfo">{{ userInfo.nickName }}</view>
@@ -82,8 +82,9 @@ export default {
 	},
 	methods: {
 		handleGetUserInfo() {
-			getUserInfo().then(res => {
+			getUserInfo().then((res) => {
 				this.userInfo = res.data;
+				console.log(this.userInfo, '-------------');
 			});
 		},
 		handleShowOrder(type) {
