@@ -6,7 +6,7 @@
 			<view class="shop-info">
 				<view class="shop-name">{{ homeData.title || '' }}</view>
 				<view class="shop-time">
-					<image src="../../static/images/home/shop-time.png"></image>
+					<image src="../../static/images/home/phoneicon.png"></image>
 					<view>{{ homeData.time || '' }}</view>
 				</view>
 				<view class="shop-address">
@@ -29,7 +29,7 @@
 				</view>
 			</view>
 		</view>
-		<view v-show="loading" class="loading">
+		<view v-show="loading" class="loading">	
 			<image src="/static/loading.png"></image>
 			<text>加载中...</text>
 		</view>
@@ -51,7 +51,9 @@ export default {
 			total: 0,
 			productList: [],
 			noMoreShow: false,
-			loading: false
+			loading: false,
+			status: 'loadmore',
+			loadmoreText: '轻轻上拉加载'
 		};
 	},
 	onLoad() {
