@@ -1,6 +1,6 @@
 <template>
 	<view class="page">
-		<view class="order-img"><image class="order-img" :src="orderInfo.preImg"></image></view>
+		<view class="order-img"><image class="order-img" :src="orderInfo.preImg" mode="aspectFill"></image></view>
 		<view class="product-info">
 			<view class="product-title">{{ orderInfo.title || '' }}</view>
 			<view class="product-sku regular">{{ orderInfo.duration || 0 }}{{ orderInfo.timeUnit | timeUnitFormat }} {{ orderInfo.introduction || '' }}</view>
@@ -30,7 +30,7 @@
 			</view>
 			<view class="order-item">
 				<view class="label regular">服务人员</view>
-				<view class="content bold">{{ orderInfo.personName==null?"到店分配":orderInfo.personName }}</view>
+				<view class="content bold">{{ orderInfo.personName == null ? '到店分配' : orderInfo.personName }}</view>
 			</view>
 			<view class="order-item">
 				<view class="label regular">预约人</view>
@@ -65,7 +65,7 @@ export default {
 	},
 	methods: {
 		getOrderDetail() {
-			orderDetail(this.orderId).then(res => {
+			orderDetail(this.orderId).then((res) => {
 				this.orderInfo = res.data;
 			});
 		},

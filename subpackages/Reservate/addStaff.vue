@@ -83,7 +83,7 @@ export default {
 		}
 		.content {
 			background-color: #f6f6f6;
-			padding: 30rpx 0 36rpx 34rpx;
+			padding: 30rpx 34rpx 36rpx 34rpx;
 			border-radius: 0 0 24rpx 24rpx;
 			.staff-name {
 				font-size: 28rpx;

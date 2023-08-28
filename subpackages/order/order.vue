@@ -9,7 +9,7 @@
 		<view class="order-list" v-if="orderList.length > 0">
 			<view class="order-item" v-for="order in orderList" :key="order.id">
 				<view class="order-info">
-					<image class="order-img" :src="order.preImg" @tap="handleOrderDetail(order.id)"></image>
+					<image class="order-img" :src="order.preImg" @tap="handleOrderDetail(order.id)" mode="aspectFill"></image>
 					<view class="order-detail">
 						<view class="project-name bold" @tap="handleOrderDetail(order.id)">{{ order.title }}</view>
 						<view class="order-price regular">价格：￥{{ order.price }}</view>
