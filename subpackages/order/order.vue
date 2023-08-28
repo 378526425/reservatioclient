@@ -29,11 +29,7 @@
 			<image class="no-order" src="/static/images/order/no-order.png"></image>
 			<view class="no-result-text regular">暂无内容</view>
 		</view>
-		<view v-show="loading" class="loading">
-			<image src="/static/loading.png"></image>
-			<text>加载中...</text>
-		</view>
-		<view v-if="!loading && noMoreShow" class="no-more regular">暂无更多了～</view>
+		<uni-load-more v-if="orderList.length > 0" :status="returnLoadingText"></uni-load-more>
 		<againReservate ref="againReservate" :order-id="orderId"></againReservate>
 		<cancelReservate ref="cancelReservate" :order-id="orderId" @request="getList"></cancelReservate>
 	</view>
@@ -48,10 +44,10 @@ export default {
 			loading: false,
 			active: '',
 			tabsList: [
-				{ name: '全部', value: '', list: null },
-				{ name: '待服务', value: 'WAIT', list: null },
-				{ name: '已服务', value: 'SERVEB', list: null },
-				{ name: '过期/取消', value: 'INVALID', list: null }
+				{ name: '全部', value: '', list: null, pageIndex: 1, total: 0 },
+				{ name: '待服务', value: 'WAIT', list: null, pageIndex: 1, total: 0 },
+				{ name: '已服务', value: 'SERVEB', list: null, pageIndex: 1, total: 0 },
+				{ name: '过期/取消', value: 'INVALID', list: null, pageIndex: 1, total: 0 }
 			],
 			params: {
 				pageIndex: 1,
@@ -72,6 +68,7 @@ export default {
 	onReachBottom() {
 		if (this.params.pageIndex * this.params.pageSize < this.total) {
 			this.params.pageIndex += 1;
+			this.tabsList.find((item) => item.value === this.active).pageIndex += 1;
 			this.getList();
 		} else {
 			this.noMoreShow = true;
@@ -80,38 +77,53 @@ export default {
 	onPullDownRefresh() {
 		this.orderList = [];
 		this.params.pageIndex = 1;
+		this.tabsList.find((item) => item.value === this.active).pageIndex = 1;
 		this.getList();
 		uni.stopPullDownRefresh();
+	},
+	computed: {
+		returnLoadingText() {
+			if (this.loading) {
+				return 'loading';
+			} else if (!this.loading && this.noMoreShow) {
+				return 'no-more';
+			} else {
+				return 'more';
+			}
+		}
 	},
 	methods: {
 		getList() {
 			this.loading = true;
-			orderList(this.params).then(res => {
+			orderList(this.params).then((res) => {
 				this.loading = false;
 				this.total = res.data.totalCount;
 				this.orderList.push(...res.data.rows);
-				this.tabsList.find(item => item.value === this.active).list = this.orderList;
+				this.tabsList.find((item) => item.value === this.active).list = this.orderList;
+				this.tabsList.find((item) => item.value === this.active).total = this.total;
 				this.noMoreShow = this.params.pageIndex * this.params.pageSize > this.total;
 			});
 		},
 		handleTabClick(tab) {
 			this.active = tab.value;
-			this.params.pageIndex = 1;
 			this.params.orderType = tab.value;
-			const currentTab = this.tabsList.find(item => item.value === this.active);
+			const currentTab = this.tabsList.find((item) => item.value === this.active);
 			if (currentTab.list) {
+				this.params.pageIndex = currentTab.pageIndex;
 				this.orderList = currentTab.list;
+				this.total = currentTab.total;
 			} else {
+				this.params.pageIndex = 1;
 				this.orderList = [];
 				this.getList();
 			}
 		},
 		handleOrderDetail(id) {
 			// #ifdef MP-WEIXIN
-			getSystemConfig().then(res => {
+			getSystemConfig().then((res) => {
 				uni.requestSubscribeMessage({
 					tmplIds: JSON.parse(res.data),
-					success: res => {
+					success: (res) => {
 						console.log(res);
 					}
 				});

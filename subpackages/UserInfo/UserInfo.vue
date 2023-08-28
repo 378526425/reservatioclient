@@ -13,6 +13,7 @@
 			</view>
 			<button class="save" form-type="submit">保存</button>
 		</form>
+		<againReservate ref="againReservate" :text="text"></againReservate>
 	</view>
 </template>
 
@@ -23,7 +24,8 @@ export default {
 	data() {
 		return {
 			avatarUrl: '/static/images/my/avatar.png',
-			nickname: ''
+			nickname: '',
+			text: ''
 		};
 	},
 	onLoad() {
@@ -52,7 +54,12 @@ export default {
 				nickName: e.detail.value.nickname
 			};
 			updatePersonInfo(userInfo).then((res) => {
-				uni.navigateBack();
+				if (res.code !== 200) {
+					this.text = res.msg;
+					this.$refs.againReservate.open();
+				} else {
+					uni.navigateBack();
+				}
 			});
 		}
 	}
