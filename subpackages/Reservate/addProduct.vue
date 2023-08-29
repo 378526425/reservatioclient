@@ -2,10 +2,10 @@
 	<view class="page">
 		<view class="category-list">
 			<scroll-view class="scroll-x" scroll-x>
-				<view :class="['category', activeName === '' ? 'category-active bold' : '']" @tap="handleSelect('')">
+				<!-- <view :class="['category', activeName === '' ? 'category-active bold' : '']" @tap="handleSelect('')">
 					全部分类
 					<view v-if="activeName === ''" class="slider"></view>
-				</view>
+				</view> -->
 				<view :class="['category', activeName === category.id ? 'category-active bold' : '']" v-for="category in categoryList" :key="category.id" @tap="handleSelect(category.id)">
 					{{ category.name }}
 					<view v-if="activeName === category.id" class="slider"></view>
@@ -28,11 +28,7 @@
 				</view>
 			</view>
 		</view>
-		<view v-show="loading" class="loading">
-			<image src="/static/loading.png"></image>
-			<text>加载中...</text>
-		</view>
-		<view v-if="noMoreShow" class="no-more regular">暂无更多了～</view>
+		<uni-load-more v-if="productList.length > 0" :status="returnLoadingText"></uni-load-more>
 	</view>
 </template>
 
@@ -54,9 +50,9 @@ export default {
 			noMoreShow: false
 		};
 	},
-	onLoad() {
-		this.handleGetCategory();
-		this.handleGetProductList();
+	async onLoad() {
+		await this.handleGetCategory();
+		await this.handleGetProductList();
 	},
 	onReachBottom() {
 		if (this.params.pageIndex * this.params.pageSize < this.total) {
@@ -66,18 +62,47 @@ export default {
 			this.noMoreShow = true;
 		}
 	},
+	computed: {
+		returnLoadingText() {
+			if (this.loading) {
+				return 'loading';
+			} else if (!this.loading && this.noMoreShow) {
+				return 'no-more';
+			} else {
+				return 'more';
+			}
+		}
+	},
 	methods: {
 		handleGetCategory() {
 			productCategory().then((res) => {
 				this.categoryList = res.data;
+				this.categoryList.unshift({
+					id: '',
+					name: '全部分类'
+				});
+				this.categoryList.forEach((item) => {
+					item['total'] = 0;
+					item['list'] = null;
+					item['pageIndex'] = 1;
+				});
 			});
 		},
 		handleSelect(type) {
 			this.activeName = type;
-			this.params.pageIndex = 1;
 			this.params.categoryId = type;
-			this.productList = [];
-			this.handleGetProductList();
+			const currentCategory = this.categoryList.find((item) => item.id === type);
+			if (currentCategory) {
+				if (currentCategory.list) {
+					this.params.pageIndex = currentCategory.pageIndex;
+					this.productList = currentCategory.list;
+					this.total = currentCategory.total;
+				} else {
+					this.params.pageIndex = 1;
+					this.productList = [];
+					this.handleGetProductList();
+				}
+			}
 		},
 		handleGetProductList() {
 			this.loading = true;
@@ -85,6 +110,8 @@ export default {
 				this.loading = false;
 				this.total = res.data.totalCount;
 				this.productList = this.productList.concat(res.data.rows);
+				this.categoryList.find((item) => item.id === this.activeName).list = this.productList;
+				this.categoryList.find((item) => item.id === this.activeName).total = this.total;
 			});
 		},
 		handleSelectProduct(product) {
