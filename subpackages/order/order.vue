@@ -26,7 +26,7 @@
 			</view>
 		</view>
 		<view v-if="orderList.length === 0 && !loading" class="no-result">
-			<image class="no-order" src="/static/images/order/no-order.png"></image>
+			<image mode="aspectFill" class="no-order" src="/static/images/order/no-order.png"></image>
 			<view class="no-result-text regular">暂无内容</view>
 		</view>
 		<uni-load-more v-if="orderList.length > 0" :status="returnLoadingText"></uni-load-more>

@@ -19,7 +19,7 @@
 			<view class="text">项目详情</view>
 			<view class="project-detail-img">
 				<block v-if="productDetail.info && productDetail.info.length > 0">
-					<image v-for="(imgSrc, index) in productDetail.info" :src="imgSrc" :key="index" mode="widthFix" style="width: 750rpx; margin-bottom: -15px"></image>
+					<image  v-for="(imgSrc, index) in productDetail.info" :src="imgSrc" :key="index" mode="widthFix" style="width: 750rpx; margin-bottom: -15px"></image>
 				</block>
 			</view>
 		</view>

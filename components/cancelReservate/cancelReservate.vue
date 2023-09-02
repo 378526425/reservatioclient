@@ -2,7 +2,7 @@
 	<view>
 		<view v-if="show" class="mask">
 			<view class="mask-content">
-				<image class="clock" src="/static/images/order/cancel.png"></image>
+				<image mode="aspectFill" class="clock" src="/static/images/order/cancel.png"></image>
 				<view class="mask-title bold">是否确认取消预约</view>
 				<view class="mask-btn">
 					<view class="btn reset-submit" @tap="handleConfirm">确认取消</view>

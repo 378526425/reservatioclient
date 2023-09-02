@@ -3,6 +3,10 @@ import Vue from 'vue'
 import './uni.promisify.adaptor'
 Vue.config.productionTip = false
 App.mpType = 'app'
+
+// 导入并挂载全局的分享方法
+import share from '@/api/share.js'
+Vue.mixin(share)
 // 挂载全局filter
 Vue.filter('timeUnitFormat', function(val) {
 	switch (val) {

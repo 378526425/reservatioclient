@@ -10,7 +10,7 @@
 				<view class="input" @tap="handleSelectTime">
 					<input :class="[orderForm.startTime ? '' : 'input-placeholder']" v-model="orderForm.startTime" type="text" disabled placeholder="请选择" />
 				</view>
-				<image src="/static/images/reservate/arrow-right.png" style="width: 12rpx; height: 24rpx"></image>
+				<image mode="aspectFill" src="/static/images/reservate/arrow-right.png" style="width: 12rpx; height: 24rpx"></image>
 			</view>
 		</view>
 		<view class="form">
@@ -19,7 +19,7 @@
 				<view class="input" @tap="handleSelectProduct">
 					<input :class="[orderForm.productName ? '' : 'input-placeholder']" v-model="orderForm.productName" disabled type="text" placeholder="请选择" />
 				</view>
-				<image src="/static/images/reservate/arrow-right.png" style="width: 12rpx; height: 24rpx"></image>
+				<image mode="aspectFill" src="/static/images/reservate/arrow-right.png" style="width: 12rpx; height: 24rpx"></image>
 			</view>
 		</view>
 		<view class="form">
@@ -28,7 +28,7 @@
 				<view class="input" @tap="handleSelectStaff">
 					<input :class="[orderForm.personName ? '' : 'input-placeholder']" v-model="orderForm.personName" type="text" disabled placeholder="请选择" />
 				</view>
-				<image src="/static/images/reservate/arrow-right.png" style="width: 12rpx; height: 24rpx"></image>
+				<image mode="aspectFill" src="/static/images/reservate/arrow-right.png" style="width: 12rpx; height: 24rpx"></image>
 			</view>
 		</view>
 		<view class="form">

@@ -2,7 +2,7 @@
 	<view>
 		<view v-if="show" class="mask">
 			<view class="mask-content">
-				<image class="clock" src="/static/images/order/clock.png"></image>
+				<image mode="aspectFill" class="clock" src="/static/images/order/clock.png"></image>
 				<view class="mask-title bold">{{ text }}</view>
 				<view class="mask-btn"><view class="btn reset-submit" @tap="close">确定</view></view>
 			</view>

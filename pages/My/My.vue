@@ -7,6 +7,7 @@
 			<view class="user-info">
 				<block v-if="userInfo">
 					<image
+					     mode="aspectFill"
 						:src="userInfo.headPortrait ? userInfo.headPortrait : '/static/images/my/avatar.png'"
 						style="width: 140rpx; height: 140rpx; border-radius: 50%"
 						@tap="handleUpdateUserInfo"
@@ -14,7 +15,7 @@
 					<view class="username bold" @tap="handleUpdateUserInfo">{{ userInfo.nickName }}</view>
 				</block>
 				<block v-else>
-					<image src="/static/images/my/avatar.png" style="width: 140rpx; height: 140rpx"></image>
+					<image mode="aspectFill" src="/static/images/my/avatar.png" style="width: 140rpx; height: 140rpx"></image>
 					<view class="username bold" @tap="handleLogin">请登录</view>
 				</block>
 			</view>
@@ -36,17 +37,17 @@
 		<view class="bottom">
 			<view class="cell" @tap="handleGetSupport">
 				<view class="cell-left">
-					<image class="cell-left-icon" src="/static/images/my/about.png" style="width: 34rpx; height: 34rpx"></image>
+					<image mode="aspectFill" class="cell-left-icon" src="/static/images/my/about.png" style="width: 34rpx; height: 34rpx"></image>
 					<view class="cell-left-text">技术支持</view>
 				</view>
-				<image class="cell-right-icon" src="/static/images/my/arrow-right.png"></image>
+				<image mode="aspectFill" class="cell-right-icon" src="/static/images/my/arrow-right.png"></image>
 			</view>
 			<view class="cell" v-if="isShowLogout" @tap="handleLogout">
 				<view class="cell-left">
-					<image class="cell-left-icon" src="/static/images/my/logout.png" style="width: 34rpx; height: 36rpx"></image>
+					<image mode="aspectFill" class="cell-left-icon" src="/static/images/my/logout.png" style="width: 34rpx; height: 36rpx"></image>
 					<view class="cell-left-text regular">注销登录</view>
 				</view>
-				<image class="cell-right-icon" src="/static/images/my/arrow-right.png"></image>
+				<image mode="aspectFill" class="cell-right-icon" src="/static/images/my/arrow-right.png"></image>
 			</view>
 		</view>
 		<againReservate ref="againReservate" :text="text"></againReservate>

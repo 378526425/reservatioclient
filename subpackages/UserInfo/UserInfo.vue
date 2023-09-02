@@ -4,7 +4,7 @@
 			<view class="form-item">
 				<view class="label regular">个人头像</view>
 				<view class="content">
-					<button class="avatar-button" open-type="chooseAvatar" @chooseavatar="handleChooseAvatar"><image class="avatar" :src="avatarUrl"></image></button>
+					<button class="avatar-button" open-type="chooseAvatar" @chooseavatar="handleChooseAvatar"><image mode="aspectFill" class="avatar" :src="avatarUrl"></image></button>
 				</view>
 			</view>
 			<view class="form-item">

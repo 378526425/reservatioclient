@@ -1,16 +1,16 @@
 <template>
 	<view style="padding-bottom: 10rpx">
-		<view style="height: 422rpx"><image :src="homeData.mainImg" style="width: 100%; height: 422rpx"></image></view>
+		<view style="height: 422rpx"><image mode="aspectFill" :src="homeData.mainImg" style="width: 100%; height: 422rpx"></image></view>
 		<view class="shop">
-			<view class="shop-logo"><image :src="homeData.preImg" style="width: 144rpx; height: 144rpx"></image></view>
+			<view class="shop-logo"><image mode="aspectFill" :src="homeData.preImg" style="width: 144rpx; height: 144rpx"></image></view>
 			<view class="shop-info">
 				<view class="shop-name">{{ homeData.title || '' }}</view>
 				<view class="shop-time">
-					<image src="../../static/images/home/phoneicon.png"></image>
+					<image mode="aspectFill" src="../../static/images/home/phoneicon.png"></image>
 					<view>{{ homeData.time || '' }}</view>
 				</view>
 				<view class="shop-address">
-					<image src="../../static/images/home/home-addr.png"></image>
+					<image mode="aspectFill" src="../../static/images/home/home-addr.png"></image>
 					<view>{{ homeData.location || '' }}</view>
 				</view>
 			</view>
@@ -29,10 +29,7 @@
 				</view>
 			</view>
 		</view>
-		<view v-show="loading" class="loading">	
-			<image src="/static/loading.png"></image>
-			<text>加载中...</text>
-		</view>
+		<uni-load-more v-if="loading" status="loading"></uni-load-more>
 		<view v-if="noMoreShow" class="no-more regular">暂无更多了～</view>
 	</view>
 </template>

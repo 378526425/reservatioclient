@@ -1,6 +1,6 @@
 <template>
 	<view class="page">
-		<image class="wechart-qr" show-menu-by-longpress src="/static/images/my/wechart.png"></image>
+		<image class="wechart-qr" mode="aspectFill" show-menu-by-longpress src="/static/images/my/wechart.png"></image>
 		<view class="wechart-no bold">微信号 MMRWXM</view>
 		<view class="tips bold">如需软件定制开发请扫码添加微信</view>
 	</view>

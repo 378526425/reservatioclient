@@ -12,10 +12,7 @@
 				</view>
 			</view>
 		</view>
-		<view v-show="loading" class="loading">
-			<image src="/static/loading.png"></image>
-			<text>加载中...</text>
-		</view>
+		<uni-load-more v-if="loading" status="loading"></uni-load-more>
 		<view v-if="noMoreShow" class="no-more regular">暂无更多了～</view>
 	</view>
 </template>
