@@ -56,7 +56,7 @@ export default {
 	display: flex;
 	// align-items: center;
 	justify-content: center;
-	padding-top: 300rpx;
+	padding-top: 45%;
 	.mask-content {
 		width: 474rpx;
 		height: 454rpx;

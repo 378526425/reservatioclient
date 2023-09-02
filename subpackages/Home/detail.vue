@@ -1,7 +1,7 @@
 <template>
 	<view class="page">
 		<view class="project-img">
-			<image :src="productDetail.preImg" mode="aspectFill"></image>
+			<image :src="productDetail.mainImg" mode="aspectFill"></image>
 		</view>
 		<view class="project-info">
 			<view class="project-name">{{ productDetail.title || '' }}</view>
