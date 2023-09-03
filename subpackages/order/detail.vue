@@ -1,6 +1,6 @@
 <template>
 	<view class="page">
-		<view class="order-img"><image class="order-img" :src="orderInfo.preImg" mode="aspectFill"></image></view>
+		<view class="order-img"><image class="order-img" :src="orderInfo.mainImg" mode="aspectFill"></image></view>
 		<view class="product-info">
 			<view class="product-title">{{ orderInfo.title || '' }}</view>
 			<view class="product-sku regular">{{ orderInfo.duration || 0 }}{{ orderInfo.timeUnit | timeUnitFormat }} {{ orderInfo.introduction || '' }}</view>
@@ -14,7 +14,7 @@
 			<view class="title">预约信息</view>
 			<view class="order-item">
 				<view class="label regular">预约门店</view>
-				<view class="content bold">莱特妮斯沙坪坝店</view>
+				<view class="content bold">莱特妮丝沙坪坝店</view>
 			</view>
 			<view class="order-item">
 				<view class="label regular">预约时间</view>

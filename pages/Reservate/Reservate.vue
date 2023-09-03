@@ -2,7 +2,7 @@
 	<view class="page">
 		<view class="form reservate-shop">
 			<view class="label regular">预约门店</view>
-			<view class="content bold">莱特妮斯（沙坪坝店）</view>
+			<view class="content bold">莱特妮丝（沙坪坝店）</view>
 		</view>
 		<view class="form">
 			<view class="label regular">到店时间</view>
