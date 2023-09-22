@@ -2,7 +2,7 @@ module.exports = {
 	devServer: {
 		proxy: {
 			'': {
-				target: 'http://localhost:8083/',
+				target: 'https://www.wxmblog.com/reservationdevapi/',
 				changeOrigin: true
 			}
 		}
