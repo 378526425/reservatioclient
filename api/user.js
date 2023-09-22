@@ -6,7 +6,7 @@ import request from "@/request/index.js"
 
 export function wxlogin(data) {
 	return request({
-		url: 'token/wxAppletLogin',
+		url: '/token/wxAppletLogin',
 		method: 'POST',
 		data: data
 	})
@@ -14,7 +14,7 @@ export function wxlogin(data) {
 
 export function wxregister(data) {
 	return request({
-		url: 'token/wxAppletRegister',
+		url: '/token/wxAppletRegister',
 		method: 'POST',
 		data
 	})
@@ -25,7 +25,7 @@ export function wxregister(data) {
  */
 export function userLogout() {
 	return request({
-		url: 'token/logout',
+		url: '/token/logout',
 		method: 'DELETE'
 	}, isLoading = false)
 }
@@ -35,7 +35,7 @@ export function userLogout() {
  */
 export function getUserInfo() {
 	return request({
-		url: 'reservation/fruser/personal',
+		url: '/reservation/fruser/personal',
 		method: 'GET'
 	})
 }

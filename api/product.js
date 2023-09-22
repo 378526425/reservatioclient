@@ -6,7 +6,7 @@ import request from "@/request/index.js"
  */
 export function productCategory() {
 	return request({
-		url: 'reservation/product/allCategory',
+		url: '/reservation/product/allCategory',
 		method: 'GET'
 	})
 }
@@ -16,7 +16,7 @@ export function productCategory() {
  */
 export function getCouponProductList(params) {
 	return request({
-		url: 'reservation/product/page',
+		url: '/reservation/product/page',
 		method: 'GET',
 		data: params
 	})

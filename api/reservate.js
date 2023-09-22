@@ -6,7 +6,7 @@ import request from "@/request/index.js"
  */
 export function getPersonnelInfo() {
 	return request({
-		url: 'reservation/productorder/historyOrder',
+		url: '/reservation/productorder/historyOrder',
 		method: 'GET'
 	})
 }

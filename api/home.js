@@ -9,7 +9,7 @@ import request from "@/request/index.js"
  */
 export function getHomeData() {
 	return request({
-		url: 'reservation/product/summary',
+		url: '/reservation/product/summary',
 		method: "GET"
 	})
 }

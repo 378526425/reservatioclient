@@ -6,7 +6,7 @@ import request from "@/request/index.js"
  */
 export function createOrder(data) {
 	return request({
-		url: 'reservation/productorder/add',
+		url: '/reservation/productorder/add',
 		method: 'POST',
 		data: data
 	}, true)
@@ -17,7 +17,7 @@ export function createOrder(data) {
  */
 export function orderList(params) {
 	return request({
-		url: 'reservation/fruser/order/page',
+		url: '/reservation/fruser/order/page',
 		method: 'GET',
 		data: params
 	})
