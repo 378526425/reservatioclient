@@ -21,15 +21,15 @@
 			</view>
 			<view class="function-area">
 				<view class="area" @tap="handleShowOrder('')">
-					<view class="num">{{ userInfo.allOrder || 0 }}</view>
+					<view class="num">{{ userInfo!=null&&userInfo.allOrder!=null?userInfo.allOrder: 0 }}</view>
 					<view class="title regular">预约记录</view>
 				</view>
 				<view class="area" @tap="handleShowOrder('WAIT')">
-					<view class="num">{{ userInfo.waitOrder || 0 }}</view>
+					<view class="num">{{ userInfo!=null&&userInfo.waitOrder!=null?userInfo.waitOrder: 0 }}</view>
 					<view class="title regular">待服务</view>
 				</view>
 				<view class="area" @tap="handleShowOrder('SERVEB')">
-					<view class="num">{{ userInfo.completeOrder || 0 }}</view>
+					<view class="num">{{ userInfo!=null&&userInfo.completeOrder!=null?userInfo.completeOrder: 0 }}</view>
 					<view class="title regular">已服务</view>
 				</view>
 			</view>

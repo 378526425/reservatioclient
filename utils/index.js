@@ -1,5 +1,6 @@
 import {
-	wxlogin
+	wxlogin,
+	wxregister
 } from '@/api/user.js';
 
 function handleMonthDay(monthDay) {
@@ -34,7 +35,10 @@ export function isLogin() {
 }
 
 export function goLogin() {
+
 	return new Promise((resolve) => {
+
+		// #ifdef MP-WEIXIN
 		wx.login({
 			success: (res) => {
 				const {
@@ -48,5 +52,32 @@ export function goLogin() {
 				});
 			}
 		});
+		// #endif
+		// #ifdef H5
+
+		wxlogin({
+			code: "ip"
+		}).then((res) => {
+
+			if (res.code == 11002) {
+				//用户不存在
+				wxregister({
+					code: "ip",
+					nickName: 'H5用户'
+				}).then(res => {
+					wxlogin({
+						code: "ip"
+					}).then((res) => {
+						uni.setStorageSync('token', res.data.token);
+						resolve()
+					});
+				});
+			} else {
+				uni.setStorageSync('token', res.data.token);
+				resolve()
+			}
+
+		});
+		// #endif
 	})
 }

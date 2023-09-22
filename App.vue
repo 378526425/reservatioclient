@@ -13,7 +13,14 @@ export default {
 				}
 			});
 		}
-
+		// #endif
+		
+		// #ifdef H5
+		if (!uni.getStorageSync('is_register')) {
+			wxregister({ code: "ip", nickName: 'H5用户' }).then(res => {
+				uni.setStorageSync('is_register', 1);
+			});
+		}
 		// #endif
 	},
 	onShow: function() {

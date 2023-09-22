@@ -63,10 +63,10 @@ export default {
 	data() {
 		return {
 			orderForm: {
-				contacts: '预约人',
+				contacts: '',
 				personId: '',
 				personName: '',
-				phone: '18990909090',
+				phone: '',
 				productId: '',
 				productName: '',
 				remark: '',
@@ -78,8 +78,11 @@ export default {
 	async onLoad() {
 		// 获取用户信息补充
 		const res = await getPersonnelInfo();
-		this.orderForm.contacts = res.data.contacts;
-		this.orderForm.phone = res.data.phone;
+		if(res.code==200)
+		{
+			this.orderForm.contacts = res.data.contacts;
+			this.orderForm.phone = res.data.phone;
+		}
 	},
 	methods: {
 		handleSelectTime() {
