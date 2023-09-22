@@ -1,7 +1,6 @@
 .hbuilderx
 .DS_Store
 unpackage
-uni_modules
 package-lock.json
 HELP.md
 target/
