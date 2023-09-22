@@ -1,9 +1,7 @@
 <template>
 	<view class="page">
 		<view class="top" :style="{ backgroundImage: `url(${myBg})`, paddingTop: safeTopHeight + 'px' }">
-			<!-- #ifdef MP-WEIXIN -->
 			<view class="weixin-header regular">个人中心</view>
-			<!-- #endif -->
 			<view class="user-info">
 				<block v-if="userInfo">
 					<image
