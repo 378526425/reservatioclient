@@ -1,92 +1,62 @@
-# 预约小程序app端
+# 简介
+美容行业门店服务预约小程序，适用于线下个体户，有自己的品牌或者门店的商家，店主，做美容，美发，医美，按摩等服务性质行业的在线预约，管理，可实现客户在线查看，服务预约，到期提醒，商家在线管理服务项目，服务订单 ，处理服务 ，通知客户等，增强门店品牌效应，展示产品，提高服务产品营销传播途径，给客户带来信任感,降低销售阻力。
+# 演示地址
+小程序端小程序演示，微信扫描下方小程序码
+![gh_ccacf93dc844_258 (2)](https://www.wxmblog.com/upload/2023/09/gh_ccacf93dc844_258%20(2).jpg)
+H5演示地址：
+https://www.wxmblog.com/reservationapp
+#  合作洽谈
+一个人力量有限，所幸有小伙伴一起前行，专业后端，资深UI，前端，运维，产品，测试，项目管理俱全，项目经验丰富，责任心强，如果你有软件开发需求可与我联系，微信：MMRWXM（请注明来意）
+# 项目地址
+## github
+https://github.com/378526425/reservatioclient
+## gitee
+https://gitee.com/wxmr0/reservationapp
+# 关于授权
+✅允许
+-  个人学习使用
+- 允许用于学习、毕设等
+- 允许进行商业使用，但需要保留客户端个人中心-技术支持页面，如需要删除该页，需联系作者取得作者授权，请自觉遵守使用协议
+- 推荐Watch、Star项目，获取项目第一时间更新，同时也是对项目最好的支持
+# 项目清单
+完整项目清单包含如下
+1，小程序端
+2,   服务端
+3，后台管理端
+本次源码开源部分仅包含小程序端，不包括后端和运营端，如需要其他端源码请联系作者
+# 技术架构
+## 小程序端
+开发框架 uniapp
+小程序端使用uniapp开发，一次开发可垮三端平台，支持发布到微信等小程序平台，H5,app端。
+## 服务端
+开发语言： java
+开发框架： springboot,spring cloud alibaba 两种版本，设计时按微服务设计开发，鉴于微服务的复杂性，降低维护成本，改造了一个单体springboot版本，功能完全一样
+数据库：mysql redis
+文件存储:  minio
+短信通知：阿里云短信
+## 后台管理端
+开发框架： vue
+# 功能模块
+## 客户端
+- 服务项目浏览
+- 服务项目预约
+- 服务即将到期微信内 短信提醒
+- 修改个人头像昵称
+- 个人中心
+- 服务订单列表，待服务，已服务，已过期等
+- 取消服务
+- 登录 注销登录
+- 微信好友 朋友圈分享
+-  ......
+## 后台管理端
+- 人员管理
+- 分类管理
+- 产品管理
+- 订单管理
+- ......
 
-预约小程序app端
 
-## Getting started
+# 页面展示
+## 客户端
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin http://81.69.247.192/gitlab-instance-29ce9279/reservationapp.git
-git branch -M main
-git push -uf origin main
-```
-
-## Integrate with your tools
-
-- [ ] [Set up project integrations](http://81.69.247.192/gitlab-instance-29ce9279/reservationapp/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+## 后台管理端
