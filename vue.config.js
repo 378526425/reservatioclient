@@ -1,10 +1,13 @@
 module.exports = {
-	devServer: {
-		proxy: {
-			'': {
-				target: 'https://www.wxmblog.com/reservationdevapi',
-				changeOrigin: true
-			}
-		}
+    devServer: {
+		    proxy: {
+		      '/reservationdevapi': {
+		        target: 'https://www.wxmblog.com/reservationdevapi',
+				changeOrigin: true,
+		        pathRewrite: {
+		          '^/reservationdevapi': ''
+		        }
+		      }
+		    },
 	}
 }

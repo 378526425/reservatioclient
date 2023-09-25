@@ -1,6 +1,6 @@
 {
     "name" : "reservate",
-    "appid" : "__UNI__1F2A199",
+    "appid" : "__UNI__6C9B55D",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -73,5 +73,11 @@
     "uniStatistics" : {
         "enable" : false
     },
-    "vueVersion" : "2"
+    "vueVersion" : "2",
+    "h5" : {
+        "router" : {
+            "mode" : "hash",
+            "base" : "/reservationapp/"
+        }
+    }
 }
