@@ -33,6 +33,7 @@
 			</view>
 		</view>
 		<view class="bottom">
+			<!--start 商业使用 未经作者授权不得删除此项 联系微信：MMRWXM（请注明来意） start -->
 			<view class="cell" @tap="handleGetSupport">
 				<view class="cell-left">
 					<image mode="aspectFill" class="cell-left-icon" src="/static/images/my/about.png" style="width: 34rpx; height: 34rpx"></image>
@@ -40,6 +41,7 @@
 				</view>
 				<image mode="aspectFill" class="cell-right-icon" src="/static/images/my/arrow-right.png"></image>
 			</view>
+			<!--end 商业使用 未经作者授权不得删除此项 联系微信：MMRWXM（请注明来意） end-->
 			<view class="cell" v-if="isShowLogout" @tap="handleLogout">
 				<view class="cell-left">
 					<image mode="aspectFill" class="cell-left-icon" src="/static/images/my/logout.png" style="width: 34rpx; height: 36rpx"></image>

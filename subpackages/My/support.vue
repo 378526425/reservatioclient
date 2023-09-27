@@ -1,8 +1,10 @@
 <template>
 	<view class="page">
+		<!--start 商业使用 未经作者授权不得删除此项 联系微信：MMRWXM（请注明来意） start -->
 		<image class="wechart-qr" mode="aspectFill" show-menu-by-longpress src="/static/images/my/wechart.png"></image>
 		<view class="wechart-no bold">微信号 MMRWXM</view>
 		<view class="tips bold">如需软件定制开发请扫码添加微信</view>
+		<!--end 商业使用 未经作者授权不得删除此项 联系微信：MMRWXM（请注明来意） end -->
 	</view>
 </template>
 
