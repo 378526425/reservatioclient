@@ -4,10 +4,14 @@
 ## 小程序端小程序演示
 微信扫描下方小程序码<br>
 ![gh_ccacf93dc844_258 (2)](https://www.wxmblog.com/upload/2023/09/gh_ccacf93dc844_258%20(2).jpg)
-## H5演示地址：
+## H5演示地址
 https://www.wxmblog.com/reservationapp
+## 后台管理演示地址
+http://1.14.110.117:6104<br>
+账号：demo<br>
+密码：123456
 #  合作洽谈
-一个人力量有限，所幸有小伙伴一起前行，专业后端，资深UI，前端，运维，产品，测试，项目管理俱全，项目经验丰富，责任心强，如果你有软件开发需求可与我联系，微信：MMRWXM（请注明来意）
+专业后端，资深UI，前端，运维，产品，测试，项目管理俱全，项目经验丰富，如果你有软件开发需求可与我联系，微信：MMRWXM（请注明来意）
 # 项目地址
 ## github
 https://github.com/378526425/reservatioclient
@@ -20,11 +24,45 @@ https://gitee.com/wxmr0/reservationapp
 - 允许进行商业使用，但需要保留客户端个人中心-技术支持页面，如需要删除该页，需联系作者取得作者授权，请自觉遵守使用协议
 - 推荐Watch、Star项目，获取项目第一时间更新，同时也是对项目最好的支持
 # 项目清单
-完整项目清单包含如下
-1，小程序端
-2,   服务端
-3，后台管理端
+完整项目清单包含如下<br>
+1 小程序端<br>
+2 服务端<br>
+3 后台管理端<br>
 本次源码开源部分仅包含小程序端，不包括后端和运营端，如需要其他端源码请联系作者
+# 项目结构
+## 小程序端
+```
+platform
+|--api api接口请求
+|--components 公共组件
+|--pages tab页面
+|--request restful接口请求封装
+|--static 静态资源
+|--subpackages 分包页面
+|--uni_modules 引用组件包
+|--utils 工具包
+|--......
+```
+## 服务端
+```
+platform
+|--authority 权限认证
+|--common 公共工具类
+|--controller 控制层
+|--dao 数据访问层 
+|--entity 实体类
+|--schedules 定时器
+|--service 业务层
+|--......
+```
+## 后台管理端
+```
+platform
+|--mock 公共相关js
+|--public 静态资源
+|--src 核心业务
+|--......
+```
 # 技术架构
 ## 小程序端
 开发框架 uniapp
@@ -56,8 +94,22 @@ https://gitee.com/wxmr0/reservationapp
 - 订单管理
 - ......
 
-
 # 页面展示
 ## 客户端
-
+![1-1695822645111](https://www.wxmblog.com/upload/2023/09/1-1695822645111.PNG)
+![2-1695822645074](https://www.wxmblog.com/upload/2023/09/2-1695822645074.PNG)
+![3-1695822645027](https://www.wxmblog.com/upload/2023/09/3-1695822645027.PNG)
+![4-1695822647320](https://www.wxmblog.com/upload/2023/09/4-1695822647320.PNG)
+![5-1695822647224](https://www.wxmblog.com/upload/2023/09/5-1695822647224.PNG)
+![6-1695822647326](https://www.wxmblog.com/upload/2023/09/6-1695822647326.PNG)
 ## 后台管理端
+![1](https://www.wxmblog.com/upload/2023/09/1.PNG)
+![2](https://www.wxmblog.com/upload/2023/09/2.PNG)
+![3](https://www.wxmblog.com/upload/2023/09/3.PNG)
+![5](https://www.wxmblog.com/upload/2023/09/5.PNG)
+![6](https://www.wxmblog.com/upload/2023/09/6.PNG)
+![4](https://www.wxmblog.com/upload/2023/09/4.PNG)
+![9](https://www.wxmblog.com/upload/2023/09/9.PNG)
+![7](https://www.wxmblog.com/upload/2023/09/7.PNG)
+![8](https://www.wxmblog.com/upload/2023/09/8.PNG)
+![10](https://www.wxmblog.com/upload/2023/09/10.PNG)
