@@ -45,3 +45,73 @@ platform
 |--utils 工具包
 |--......
 ```
+## 服务端
+```
+platform
+|--authority 权限认证
+|--common 公共工具类
+|--controller 控制层
+|--dao 数据访问层 
+|--entity 实体类
+|--schedules 定时器
+|--service 业务层
+|--......
+```
+## 后台管理端
+```
+platform
+|--mock 公共相关js
+|--public 静态资源
+|--src 核心业务
+|--......
+```
+# 技术架构
+## 小程序端
+开发框架 uniapp
+小程序端使用uniapp开发，一次开发可垮三端平台，支持发布到微信等小程序平台，H5,app端。
+## 服务端
+开发语言： java
+开发框架： springboot,spring cloud alibaba 两种版本，设计时按微服务设计开发，鉴于微服务的复杂性，降低维护成本，改造了一个单体springboot版本，功能完全一样
+数据库：mysql redis
+文件存储:  minio
+短信通知：阿里云短信
+## 后台管理端
+开发框架： vue
+# 功能模块
+## 客户端
+- 服务项目浏览
+- 服务项目预约
+- 服务即将到期微信内 短信提醒
+- 修改个人头像昵称
+- 个人中心
+- 服务订单列表，待服务，已服务，已过期等
+- 取消服务
+- 登录 注销登录
+- 微信好友 朋友圈分享
+-  ......
+## 后台管理端
+- 人员管理
+- 分类管理
+- 产品管理
+- 订单管理
+- ......
+
+# 页面展示
+## 客户端
+![1-1695822645111](https://www.wxmblog.com/upload/2023/09/1-1695822645111.PNG)
+![2-1695822645074](https://www.wxmblog.com/upload/2023/09/2-1695822645074.PNG)
+![3-1695822645027](https://www.wxmblog.com/upload/2023/09/3-1695822645027.PNG)
+![4-1695822647320](https://www.wxmblog.com/upload/2023/09/4-1695822647320.PNG)
+![5-1695822647224](https://www.wxmblog.com/upload/2023/09/5-1695822647224.PNG)
+![6-1695822647326](https://www.wxmblog.com/upload/2023/09/6-1695822647326.PNG)
+## 后台管理端
+![1](https://www.wxmblog.com/upload/2023/09/1.PNG)
+![2](https://www.wxmblog.com/upload/2023/09/2.PNG)
+![3](https://www.wxmblog.com/upload/2023/09/3.PNG)
+![5](https://www.wxmblog.com/upload/2023/09/5.PNG)
+![6](https://www.wxmblog.com/upload/2023/09/6.PNG)
+![4](https://www.wxmblog.com/upload/2023/09/4.PNG)
+![9](https://www.wxmblog.com/upload/2023/09/9.PNG)
+![7](https://www.wxmblog.com/upload/2023/09/7.PNG)
+![8](https://www.wxmblog.com/upload/2023/09/8.PNG)
+![10](https://www.wxmblog.com/upload/2023/09/10.PNG)
