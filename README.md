@@ -45,3 +45,31 @@ platform
 |--utils 工具包
 |--......
 ```
+## 服务端
+```
+platform
+|--authority 权限认证
+|--common 公共工具类
+|--controller 控制层
+|--dao 数据访问层 
+|--entity 实体类
+|--schedules 定时器
+|--service 业务层
+|--......
+```
+## 后台管理端
+```
+platform
+|--mock 公共相关js
+|--public 静态资源
+|--src 核心业务
+|--......
+```
+# 技术架构
+## 小程序端
+开发框架 uniapp
+小程序端使用uniapp开发，一次开发可垮三端平台，支持发布到微信等小程序平台，H5,app端。
+## 服务端
+开发语言： java
+开发框架： springboot,spring cloud alibaba 两种版本，设计时按微服务设计开发，鉴于微服务的复杂性，降低维护成本，改造了一个单体springboot版本，功能完全一样
+数据库：mysql redis
