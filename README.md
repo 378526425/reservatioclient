@@ -67,13 +67,13 @@ platform
 ```
 # 技术架构
 ## 小程序端
-开发框架 uniapp
+开发框架 uniapp<br>
 小程序端使用uniapp开发，一次开发可垮三端平台，支持发布到微信等小程序平台，H5,app端。
 ## 服务端
-开发语言： java
-开发框架： springboot,spring cloud alibaba 两种版本，设计时按微服务设计开发，鉴于微服务的复杂性，降低维护成本，改造了一个单体springboot版本，功能完全一样
-数据库：mysql redis
-文件存储:  minio
+开发语言： java<br>
+开发框架： springboot,spring cloud alibaba 两种版本，设计时按微服务设计开发，鉴于微服务的复杂性，降低维护成本，改造了一个单体springboot版本，功能完全一样<br>
+数据库：mysql redis<br>
+文件存储:  minio<br>
 短信通知：阿里云短信
 ## 后台管理端
 开发框架： vue
