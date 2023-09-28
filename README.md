@@ -100,7 +100,7 @@ platform
 ## 客户端
 ![3-1695822645027](https://www.wxmblog.com/upload/2023/09/3-1695822645027.PNG)
 ![4-1695822647320](https://www.wxmblog.com/upload/2023/09/4-1695822647320.PNG)
-![5-1695822647224](https://www.wxmblog.com/upload/2023/09/5-1695822647224.PNG
+![5-1695822647224](https://www.wxmblog.com/upload/2023/09/5-1695822647224.PNG)
 ![6-1695822647326](https://www.wxmblog.com/upload/2023/09/6-1695822647326.PNG)
 ## 后台管理端
 ![1](https://www.wxmblog.com/upload/2023/09/1.PNG)
