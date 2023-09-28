@@ -101,8 +101,6 @@ platform
 ![1-1695822645111](https://www.wxmblog.com/upload/2023/09/1-1695822645111.PNG)
 ![2-1695822645074](https://www.wxmblog.com/upload/2023/09/2-1695822645074.PNG)
 ![3-1695822645027](https://www.wxmblog.com/upload/2023/09/3-1695822645027.PNG)
-![4-1695822647320](https://www.wxmblog.com/upload/2023/09/4-1695822647320.PNG)
-![6-1695822647326](https://www.wxmblog.com/upload/2023/09/6-1695822647326.PNG)
 ## 后台管理端
 ![1](https://www.wxmblog.com/upload/2023/09/1.PNG)
 ![2](https://www.wxmblog.com/upload/2023/09/2.PNG)
