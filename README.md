@@ -98,6 +98,8 @@ platform
 
 # 页面展示
 ## 客户端
+![Snipaste_2023-09-28_15-29-50](https://www.wxmblog.com/upload/2023/09/Snipaste_2023-09-28_15-29-50.png)
+![Snipaste_2023-09-28_15-31-53](https://www.wxmblog.com/upload/2023/09/Snipaste_2023-09-28_15-31-53.png)
 ![4-1695822647320](https://www.wxmblog.com/upload/2023/09/4-1695822647320.PNG)
 ![5-1695822647224](https://www.wxmblog.com/upload/2023/09/5-1695822647224.PNG)
 ![6-1695822647326](https://www.wxmblog.com/upload/2023/09/6-1695822647326.PNG)
@@ -106,6 +108,9 @@ platform
 ![2](https://www.wxmblog.com/upload/2023/09/2.PNG)
 ![3](https://www.wxmblog.com/upload/2023/09/3.PNG)
 ![5](https://www.wxmblog.com/upload/2023/09/5.PNG)
+![3](https://www.wxmblog.com/upload/2023/09/3.png)
+![2](https://www.wxmblog.com/upload/2023/09/2.png)
+![1](https://www.wxmblog.com/upload/2023/09/1.png)
 ![6](https://www.wxmblog.com/upload/2023/09/6.PNG)
 ![4](https://www.wxmblog.com/upload/2023/09/4.PNG)
 ![10](https://www.wxmblog.com/upload/2023/09/10.PNG)
