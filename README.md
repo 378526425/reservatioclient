@@ -98,6 +98,8 @@ platform
 
 # 页面展示
 ## 客户端
+![1-1695822645111](https://www.wxmblog.com/upload/2023/09/1-1695822645111.PNG)
+![2-1695822645074](https://www.wxmblog.com/upload/2023/09/2-1695822645074.PNG)
 
 ## 后台管理端
 ![1](https://www.wxmblog.com/upload/2023/09/1.PNG)
