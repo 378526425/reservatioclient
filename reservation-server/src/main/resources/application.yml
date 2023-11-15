@@ -1,0 +1,194 @@
+# Tomcat
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+    connection-timeout: 5000ms
+  #port: 8083
+  port: ${SERVER_PORT}
+
+spring:
+  # jackson时间格式化
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+      enabled: true
+  redis:
+    open: true  # 是否开启redis缓存  true开启   false关闭
+    database: 0
+    #host: 127.0.0.1
+    #port: 6379
+    #password: 123456    # 密码（默认为空）
+    host: ${REDIS_HOST}
+    port: ${REDIS_PORT}
+    password: ${REDIS_PASSWORD}   # 密码（默认为空）
+    timeout: 6000ms  # 连接超时时长（毫秒）
+    jedis:
+      pool:
+        max-active: 1000  # 连接池最大连接数（使用负值表示没有限制）
+        max-wait: -1ms      # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-idle: 10      # 连接池中的最大空闲连接
+        min-idle: 5       # 连接池中的最小空闲连接
+  mvc:
+    throw-exception-if-no-handler-found: true
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  application:
+    name: fast
+  web:
+    resources:
+      static-locations: classpath:/static/,file:${wxmfast.config.file.static-path}
+
+  #    add-mappings: false
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      #url: jdbc:mysql://127.0.0.1:3306/fast-reservation?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      #username: root
+      #password: 123456
+      url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_DATABASE}?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      username: ${DB_USERNAME}
+      password: ${DB_PASSWORD}
+      initial-size: 10
+      max-active: 100
+      min-idle: 10
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      #Oracle需要打开注释
+      #validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        #login-username: admin
+        #login-password: admin
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: false
+        wall:
+          config:
+            multi-statement-allow: true
+
+##多数据源的配置
+#dynamic: spring.cloud.nacos.discovery.server-addr=127.0.0.1:8848
+#  datasource:
+#    slave1:
+#      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#      url: jdbc:sqlserver://localhost:1433;DatabaseName=renren_security
+#      username: sa
+#      password: 123456
+#    slave2:
+#      driver-class-name: org.postgresql.Driver
+#      url: jdbc:postgresql://localhost:5432/renren_security
+#      username: renren
+#      password: 123456
+
+redisson:
+  address: redis://${spring.redis.host}:${spring.redis.port}
+  database: ${spring.redis.database}
+  password: ${spring.redis.password}
+#mybatis
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.wxmblog.*.entity
+  global-config:
+    #数据库相关配置
+    db-config:
+      #主键类型  AUTO:"数据库ID自增", INPUT:"用户输入ID", ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID";
+      id-type: AUTO
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+    banner: false
+  #原生配置
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+    jdbc-type-for-null: 'null'
+
+# minio 文件存储配置信息
+minio:
+  #endpoint: http://127.0.0.1:9000
+  #accesskey: minioadmin
+  #secretKey: 123456
+  #bucketName: reservation
+  #url: https://www.wxmblog.com
+  endpoint: ${MINIO_ENDPOINT}
+  accesskey: ${MINIO_ACCESSKEY}
+  secretKey: ${MINIO_SECRETKEY}
+  bucketName: ${MINIO_BUCKETNAME}
+  url: ${MINIO_URL}
+
+#阿里云短信
+alisms:
+  #accessKeyId: LTAI4FSHDYpJ9vQZGGebn3mE 仅示例
+  #secret: AqA59q88D5fyAHSYEi226BVl5ZmlOG 仅示例
+  #signName: 莱妮生活馆 仅示例
+  #orderApply: SMS_462684522 仅示例
+  #orderCancel: SMS_462745866 仅示例
+  #orderComplete: SMS_462455808 仅示例
+  #orderStart: SMS_464545847 仅示例
+  #orderPersonStart: SMS_462450990 仅示例
+  accessKeyId: ${accessKeyId}
+  secret: ${secret}
+  signName: ${signName}
+  orderApply: ${订单申请模版}
+  orderCancel: ${订单取消模版}
+  orderComplete: ${订单已完成模版}
+  orderStart: ${订单即将开始通知顾客模版}
+  orderPersonStart: ${订单即将开始通知员工模版}
+  timeout: 120
+
+
+#项目自定义相关配置 更多相关配置可参考包 com.wxmblog.base.common.constant 下ConfigConstants
+wxmfast:
+  config:
+    websocket:
+      heartbeat-time: 600
+      only-one: false
+    file:
+      temp-time: 10
+      static-path: /home/reservation/upload
+    auth:
+      wxapplet:
+        #微信小程序 appid和秘钥串
+        #appId: wxf3f8dy584eb97103 仅示例
+        #secret: 89906464aecf7hy4o8d802260c4bf4fb 仅示例
+        appId: ${微信小程序appid}
+        secret: ${微信小程序secret}
+    common:
+      enable-swagger: true
+    role:
+      #username: admin
+      #password: 1234566
+      username: ${后台管理员登录账号}
+      password: ${后台管理员登录密码}
+wx:
+  #微信小程序 消息订阅通知 模板
+  #template: Jjvu5i4MqSJUDSDFGL1f6U9wGKz0uNu8kJcBs 仅示例
+  template: Jjvu5i4MDGOIUGtRu09mSA1jlwL1f6U9Kz0uNu8kJcBs
+#businessName: 莱特妮丝
+#businessPhone: 15902393423
+businessName: ${店铺名称}
+businessPhone: ${商家电话}
+
+
+
+
+
+
+

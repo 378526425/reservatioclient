@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wxmblog.reservation.dao.FrUserDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.wxmblog.reservation.entity.FrUserEntity" id="frUserMap">
+        <result property="id" column="id"/>
+        <result property="creator" column="creator"/>
+        <result property="createTime" column="create_time"/>
+        <result property="modifyer" column="modifyer"/>
+        <result property="modifyTime" column="modify_time"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="version" column="version"/>
+        <result property="openId" column="open_id"/>
+        <result property="status" column="status"/>
+        <result property="headPortrait" column="head_portrait"/>
+        <result property="nickName" column="nick_name"/>
+        <result property="sessionKey" column="session_key"/>
+        <result property="unionId" column="union_id"/>
+        <result property="latelyTime" column="lately_time"/>
+    </resultMap>
+
+    <resultMap id="personalResponse"
+               type="com.wxmblog.reservation.common.rest.response.fruser.PersonalResponse">
+    </resultMap>
+
+    <select id="getPersonalResponse" resultMap="personalResponse" parameterType="int">
+select
+(select count(1) from product_order po where po.del_flag=0 and po.user_id=#{id}) as allOrder,
+(select count(1) from product_order po where po.del_flag=0 and po.status='WAIT' and po.user_id=#{id}) as waitOrder,
+(select count(1) from product_order po where po.del_flag=0 and po.status='SERVEB' and po.user_id=#{id}) as completeOrder
+    </select>
+
+
+    <resultMap id="usreOrderPageResponse"
+               type="com.wxmblog.reservation.common.rest.response.order.front.UserOrderPageResponse">
+    </resultMap>
+
+    <select id="orderPage" resultMap="usreOrderPageResponse"
+            parameterType="com.wxmblog.reservation.common.rest.request.order.front.UserOrderRequest">
+        select
+        po.id,
+        po.title,
+        po.pre_img,
+        po.create_time,
+        po.start_time,
+        po.price,
+        po.status
+        from
+        product_order po
+        <where>
+            po.del_flag=0 and po.user_id=#{userId}
+            <if test="orderType!=null and orderType.name()=='WAIT'">
+                and po.status='WAIT'
+            </if>
+            <if test="orderType!=null and orderType.name()=='SERVEB'">
+                and po.status='SERVEB'
+            </if>
+            <if test="orderType!=null and orderType.name()=='INVALID'">
+                and (po.status='CANCELED' or po.status='EXPIRED')
+            </if>
+        </where>
+        order by po.create_time desc
+    </select>
+
+
+    <resultMap id="usrePageResponse"
+               type="com.wxmblog.reservation.common.rest.response.fruser.admin.FrUserPageResponse">
+    </resultMap>
+
+    <select id="frUserPage" resultMap="usrePageResponse"
+            parameterType="com.wxmblog.reservation.common.rest.request.fruser.admin.FrUserPageRequest">
+  select fu.id,fu.create_time,fu.nick_name,fu.head_portrait,p.name as personName,case when utp.id is null then false else true end  as isBind from fr_user fu left join user_to_person utp on fu.id=utp.user_id left join person p on p.id=utp.person_id
+ <where>
+     fu.del_flag=0 and (utp.del_flag=0 or utp.id is null)
+     <if test="nickName!=null and nickName!=''">
+         fu.nick_name like #{nickName}
+     </if>
+     <if test="personName!=null and personName!=''">
+         p.name like #{personName}
+     </if>
+ </where>
+  order by fu.create_time desc
+    </select>
+
+</mapper>

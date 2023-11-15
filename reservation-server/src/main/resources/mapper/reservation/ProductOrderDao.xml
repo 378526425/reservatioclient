@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wxmblog.reservation.dao.ProductOrderDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.wxmblog.reservation.entity.ProductOrderEntity" id="productOrderMap">
+        <result property="id" column="id"/>
+        <result property="creator" column="creator"/>
+        <result property="createTime" column="create_time"/>
+        <result property="modifyer" column="modifyer"/>
+        <result property="modifyTime" column="modify_time"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="version" column="version"/>
+        <result property="title" column="title"/>
+        <result property="preImg" column="pre_img"/>
+        <result property="duration" column="duration"/>
+        <result property="timeUnit" column="time_unit"/>
+        <result property="introduction" column="introduction"/>
+        <result property="price" column="price"/>
+        <result property="oriPrice" column="ori_price"/>
+        <result property="userId" column="user_id"/>
+        <result property="productId" column="product_id"/>
+        <result property="status" column="status"/>
+        <result property="startTime" column="start_time"/>
+        <result property="contacts" column="contacts"/>
+        <result property="phone" column="phone"/>
+        <result property="remark" column="remark"/>
+        <result property="personId" column="person_id"/>
+        <result property="personName" column="person_name"/>
+        <result property="personPreImg" column="person_pre_img"/>
+        <result property="mainImg" column="main_img"/>
+    </resultMap>
+
+
+    <resultMap id="orderPageResponse"
+               type="com.wxmblog.reservation.common.rest.response.order.admin.OrderPageResponse">
+    </resultMap>
+
+    <select id="getPage" resultMap="orderPageResponse"
+            parameterType="com.wxmblog.reservation.common.rest.request.order.admin.OrderAdminRequest">
+        select
+        po.id,
+        po.create_time ,
+        po.start_time,
+        po.title,
+        po.pre_img,
+        po.status,
+        po.contacts,
+        po.phone,
+        po.remark,
+        po.person_name
+        from
+        product_order po
+        <where>
+            po.del_flag=0
+            <if test="title!=null and title!=''">
+                and po.title like #{title}
+            </if>
+            <if test="status!=null">
+                and po.status=#{status}
+            </if>
+            <if test="contacts!=null and contacts!=''">
+                and po.contacts like #{contacts}
+            </if>
+            <if test="phone!=null and phone!=''">
+                and po.phone like #{phone}
+            </if>
+        </where>
+        order by po.start_time desc,po.create_time desc
+    </select>
+
+    <select id="countImg" resultType="long"
+            parameterType="string">
+        select count(1) from product_order po where po.del_flag=0 and (po.pre_img=#{url} or po.main_img=#{url} or po.person_pre_img=#{url})
+    </select>
+</mapper>
