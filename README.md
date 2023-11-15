@@ -27,9 +27,9 @@ https://gitee.com/wxmr0/reservationapp
 - 推荐Watch、Star项目，获取项目第一时间更新，同时也是对项目最好的支持
 # 项目清单
 完整项目清单包含如下<br>
-1 小程序端<br>
-2 服务端<br>
-3 后台管理端<br>
+1 小程序端(uni-client)<br>
+2 服务端(reservation-server)<br>
+3 后台管理端(manage)<br>
 # 项目结构
 ## 小程序端
 ```
