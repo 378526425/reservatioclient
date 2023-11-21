@@ -113,3 +113,8 @@ platform
 ![6](https://www.wxmblog.com/upload/2023/09/6.PNG)
 ![4](https://www.wxmblog.com/upload/2023/09/4.PNG)
 ![10](https://www.wxmblog.com/upload/2023/09/10.PNG)
+# 联系我们
+## 作者微信
+MMRWXM
+## 	QQ交流群
+651724227
