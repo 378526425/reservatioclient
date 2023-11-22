@@ -32,7 +32,7 @@ CREATE TABLE `category`  (
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '分类名称',
   `sort` int NULL DEFAULT 0 COMMENT '排序',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '分类' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '分类' ROW_FORMAT = DYNAMIC;
 
 INSERT INTO `fast-reservation`.`category` (`creator`, `create_time`, `modifyer`, `modify_time`, `del_flag`, `version`, `name`, `sort`) VALUES (NULL, '2023-09-02 23:05:46', NULL, '2023-09-02 23:05:46', 0, 0, '皮肤管理', 1);
 INSERT INTO `fast-reservation`.`category` (`creator`, `create_time`, `modifyer`, `modify_time`, `del_flag`, `version`, `name`, `sort`) VALUES (NULL, '2023-09-02 23:06:08', NULL, '2023-09-02 23:06:08', 0, 0, 'SPA按摩', 2);
@@ -59,7 +59,7 @@ CREATE TABLE `fr_user`  (
   `union_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '用户在开放平台的唯一标识符',
   `lately_time` datetime NULL DEFAULT NULL COMMENT '最近时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '前台用户' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '前台用户' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for msf_config
@@ -78,7 +78,7 @@ CREATE TABLE `msf_config`  (
   `descr` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '描述信息',
   `access` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '访问类型 访问类型 PUBLIC/PRIVATE/INNER',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '系统配置' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '系统配置' ROW_FORMAT = DYNAMIC;
 
 INSERT INTO `fast-reservation`.`msf_config` (`creator`, `create_time`, `modifyer`, `modify_time`, `del_flag`, `version`, `code`, `value`, `descr`, `access`) VALUES (NULL, '2023-07-10 00:00:00', NULL, NULL, 0, 0, 'HOME_INFO', '{\r\n  \"mainImg\":\"https://www.wxmblog.com/devminio/reservation/2023/09/26/50fb89b6-070f-4328-bf64-a5db5147261e.png\",\r\n  \"preImg\":\"https://www.wxmblog.com/devminio/reservation/2023/09/26/e01ef6b2-f52b-4c0e-bf44-e90cdf2d5974.png\",\r\n  \"title\":\"莱特妮丝\",\r\n  \"time\":\"18182206033、023-65087388\",\r\n  \"location\":\"沙坪坝汉渝路13号附10号\"\r\n}', '首页预览信息', 'INNER');
 INSERT INTO `fast-reservation`.`msf_config` (`creator`, `create_time`, `modifyer`, `modify_time`, `del_flag`, `version`, `code`, `value`, `descr`, `access`) VALUES (NULL, '2023-07-10 00:00:00', NULL, NULL, 0, 0, 'Wx_Template', '[\"Jjvu5i4MqZGtRu09mSA1jlwL1f6U9wGKz0uNu8kJcBs\"]', '首页预览信息', 'PUBLIC');
@@ -100,7 +100,7 @@ CREATE TABLE `msf_file`  (
   `file_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '文件名称',
   `status` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '文件状态 TEMP-临时文件 SAVED-已保存的文件',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '文件' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '文件' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for person
@@ -119,7 +119,7 @@ CREATE TABLE `person`  (
   `introduction` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '简介',
   `phone` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '手机号 多个空格隔开',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '人员' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '人员' ROW_FORMAT = DYNAMIC;
 
 INSERT INTO `fast-reservation`.`person` (`creator`, `create_time`, `modifyer`, `modify_time`, `del_flag`, `version`, `name`, `pre_img`, `introduction`, `phone`) VALUES (NULL, '2023-09-02 22:49:55', NULL, '2023-09-26 15:38:42', 0, 0, '到店安排', 'https://www.wxmblog.com/devminio/reservation/2023/09/26/a76789d4-4a09-4706-b1db-40ab4f99edab.png', '店铺推荐合适人员', '15902393423');
 
@@ -150,7 +150,7 @@ CREATE TABLE `product`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `product_FK`(`category_id` ASC) USING BTREE,
   CONSTRAINT `product_FK` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '产品' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '产品' ROW_FORMAT = DYNAMIC;
 
 INSERT INTO `fast-reservation`.`product` (`creator`, `create_time`, `modifyer`, `modify_time`, `del_flag`, `version`, `title`, `pre_img`, `duration`, `time_unit`, `info`, `introduction`, `category_id`, `sort`, `price`, `ori_price`, `main_img`, `status`) VALUES (NULL, '2023-09-02 23:10:29', NULL, '2023-09-26 16:08:31', 0, 0, '60分钟面部清洁', 'https://www.wxmblog.com/devminio/reservation/2023/09/26/9ad0a068-9e79-40f5-ab46-2907d81732be.png', 1, 'HOUR', '[\"https://www.wxmblog.com/devminio/reservation/2023/09/26/1ba45c39-46b0-4261-9073-f7e80ae26fed.png\"]', '小气泡清洁', 16, 0, 80, 300, 'https://www.wxmblog.com/devminio/reservation/2023/09/26/b2aad885-7dac-4a8a-887d-aadbd7866e31.png', 'UP');
 INSERT INTO `fast-reservation`.`product` (`creator`, `create_time`, `modifyer`, `modify_time`, `del_flag`, `version`, `title`, `pre_img`, `duration`, `time_unit`, `info`, `introduction`, `category_id`, `sort`, `price`, `ori_price`, `main_img`, `status`) VALUES (NULL, '2023-09-02 23:13:42', NULL, '2023-09-26 16:09:12', 0, 0, 'A4小腰精', 'https://www.wxmblog.com/devminio/reservation/2023/09/26/1170f563-56af-4972-a01b-87ad6976b1c8.png', 1, 'HOUR', '[\"https://www.wxmblog.com/devminio/reservation/2023/09/26/bbb295d2-482a-4289-851a-09567e0b6d1e.png\"]', '疏通筋络 放松肌肉', 18, 0, 138, 598, 'https://www.wxmblog.com/devminio/reservation/2023/09/26/61e1fc18-fa56-4b2b-875d-94addd758ada.png', 'UP');
@@ -199,7 +199,7 @@ CREATE TABLE `product_order`  (
   INDEX `product_order_FK_1`(`product_id` ASC) USING BTREE,
   INDEX `product_order_FK`(`user_id` ASC) USING BTREE,
   CONSTRAINT `product_order_FK` FOREIGN KEY (`user_id`) REFERENCES `fr_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '产品订单' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '产品订单' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for product_to_person
@@ -221,7 +221,7 @@ CREATE TABLE `product_to_person`  (
   INDEX `product_to_person_FK_1`(`product_id` ASC) USING BTREE,
   CONSTRAINT `product_to_person_FK` FOREIGN KEY (`person_id`) REFERENCES `person` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `product_to_person_FK_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '产品人员关联表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '产品人员关联表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for user_to_person
@@ -242,6 +242,6 @@ CREATE TABLE `user_to_person`  (
   INDEX `user_to_person_FK_1`(`person_id` ASC) USING BTREE,
   CONSTRAINT `user_to_person_FK` FOREIGN KEY (`user_id`) REFERENCES `fr_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `user_to_person_FK_1` FOREIGN KEY (`person_id`) REFERENCES `person` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '用户关联人员' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '用户关联人员' ROW_FORMAT = DYNAMIC;
 
 SET FOREIGN_KEY_CHECKS = 1;
