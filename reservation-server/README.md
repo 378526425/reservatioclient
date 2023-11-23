@@ -11,7 +11,8 @@
 请确保本地基础环境搭建完毕 <br>
 jdk 1.8<br>
 Mysql 8.0<br>
-redis minio
+redis<br>
+minio<br>
 
 # 快速启动
 
