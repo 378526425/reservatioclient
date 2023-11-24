@@ -118,3 +118,5 @@ platform
 MMRWXM
 ## 	QQ交流群
 651724227
+# 其他优秀开源项目推荐
+https://www.wxmblog.com/categories/open
