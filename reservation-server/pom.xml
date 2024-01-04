@@ -19,7 +19,7 @@
         <springboot.version>2.6.3</springboot.version>
         <maven.compiler.plugin>3.8.1</maven.compiler.plugin>
         <springboot.maven.plugin.version>2.7.6</springboot.maven.plugin.version>
-        <msfast.base.common.version>0.0.6</msfast.base.common.version>
+        <msfast.base.common.version>0.0.8</msfast.base.common.version>
     </properties>
     <dependencies>
         <!--服务必要依赖-->
